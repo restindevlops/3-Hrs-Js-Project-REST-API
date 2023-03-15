@@ -17,7 +17,7 @@ function SaveToCrudCrud(event){
         quant
     }
     
-    axios.post("https://crudcrud.com/api/f45e977b57a040f5aa7d45e4a4fbadee/CandyData",obj)
+    axios.post("https://crudcrud.com/api/13db7e9eaf634bfa83a1cc6c80c57d45/CandyData",obj)
     .then((response)=>{
         showUserOnScreen(response.data)
         
@@ -30,11 +30,11 @@ function SaveToCrudCrud(event){
 }
 
 window.addEventListener("DOMContentLoaded",()=>{
-    axios.get("https://crudcrud.com/api/f45e977b57a040f5aa7d45e4a4fbadee/CandyData")
+    axios.get("https://crudcrud.com/api/13db7e9eaf634bfa83a1cc6c80c57d45/CandyData")
     .then((response)=>{
-        // console.log(response.data)
+         console.log(response.data)
         for (var i=0;i<response.data.length;i++){
-            //  console.log(response.data[i])
+             console.log(response.data[i])
             showUserOnScreen(response.data[i])
            
         }
@@ -56,7 +56,11 @@ function showUserOnScreen(obj){
     Buy1Button.value='Buy 1';
     Buy1Button.onclick=()=>{
         obj.quant=obj.quant-1;
-        axios.put(`https://crudcrud.com/api/f45e977b57a040f5aa7d45e4a4fbadee/CandyData/${obj._id}`,{obj})
+        axios.put(`https://crudcrud.com/api/13db7e9eaf634bfa83a1cc6c80c57d45/CandyData/${obj._id}`,{
+        candyname: obj.candyname, 
+        description: obj.description ,
+        price: obj.price,
+        quant: obj.quant })
         .then((response)=>{
             parentElem.removeChild(childElem);
             showUserOnScreen(obj);
@@ -65,13 +69,18 @@ function showUserOnScreen(obj){
             document.body.innerHTML+="<h2>Something went Wrong</h2>";
             console.log(err);
         })
+        
     }
     const Buy2Button=document.createElement('input');
     Buy2Button.type='button';
     Buy2Button.value='Buy 2';
     Buy2Button.onclick=()=>{
         obj.quant=obj.quant-2;
-        axios.put(`https://crudcrud.com/api/f45e977b57a040f5aa7d45e4a4fbadee/CandyData/${obj._id}`,{obj})
+        axios.put(`https://crudcrud.com/api/13db7e9eaf634bfa83a1cc6c80c57d45/CandyData/${obj._id}`,{
+        candyname: obj.candyname, 
+        description: obj.description ,
+        price: obj.price,
+        quant: obj.quant })
         .then((response)=>{
             parentElem.removeChild(childElem);
             showUserOnScreen(obj);
@@ -86,7 +95,11 @@ function showUserOnScreen(obj){
     Buy3Button.value='Buy 3';
     Buy3Button.onclick=()=>{
         obj.quant=obj.quant-3;
-        axios.put(`https://crudcrud.com/api/f45e977b57a040f5aa7d45e4a4fbadee/CandyData/${obj._id}`,{obj})
+        axios.put(`https://crudcrud.com/api/13db7e9eaf634bfa83a1cc6c80c57d45/CandyData/${obj._id}`,{
+        candyname: obj.candyname, 
+        description: obj.description ,
+        price: obj.price,
+        quant: obj.quant })
         .then((response)=>{
             parentElem.removeChild(childElem);
             showUserOnScreen(obj);
